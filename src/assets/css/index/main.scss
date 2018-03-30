@@ -1,0 +1,274 @@
+@import "../base.scss";
+footer {
+    @include flex-row;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    font-size: 32px;
+    border-top: solid 1px #ccc;
+    /*no*/
+    // display: inline-flex;
+    // flex-direction: row;
+    // width: 100%;
+    div {
+        width: 25%;
+        // display: inline-block;
+        text-align: center;
+        color: $fontColor;
+        // flex-grow: 1;
+        // flex-shrink: 1;
+        // flex-basis: 0;
+        &.on {
+            color: $mainColor;
+        }
+        i.iconfont {
+            display: block;
+            font-size: 48px;
+            height: 52px;
+            line-height: 52px;
+        }
+        i.icon-wodedingdan {
+            font-size: 44px;
+        }
+    }
+}
+
+header {
+    background-color: $mainColor;
+    // height: 50px;
+    // line-height: 50px;
+    // height: 76px;
+    .header-wrap {
+        padding: 14px 0;
+        // /*px*/
+    }
+    form {
+        @include flex-row();
+    }
+    .site {
+        font-size: 32px;
+        height: 48px;
+        color: #fff;
+        width: 24%;
+        // display: inline-block;
+        text-align: center;
+    }
+    .search {
+        @include outlinenone();
+        // display: inline-block;
+        border: none;
+        width: 70%;
+        height: 48px;
+        border-radius: 30px;
+        padding-left: 50px;
+    }
+    .icon-sousuo {
+        position: absolute;
+        font-size: 40px;
+        height: 0px;
+        // height: 20px;
+        color: #8a8a8a;
+        margin-left: 5px;
+        left: 24%;
+        margin-top: -4px;
+    }
+}
+
+.swiper-wrapper {
+    span {
+        display: inline-block;
+        // width: 100%;
+        padding: 15.64% 50%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: contain;
+    }
+}
+
+.category {
+    @include flex-row();
+    font-size: 28px;
+    >div {
+        width: 20%;
+        text-align: center;
+        color: $fontColor;
+        //以下被注释的样式可以不用
+        // flex: 1;
+        // -webkit-flex: 1 1 20%;
+        div {
+            padding: 38% 50%;
+            display: block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+        span {
+            color: $fontColor;
+            // font-size: 12px;
+            padding: 5% 0;
+            display: block;
+        }
+    }
+}
+
+//头条样式begin
+//头条样式end
+//小喇叭
+.trumpt {
+    clear: both;
+    border-top: solid 1px #eee;
+    /* no*/
+    background-color: #faf7bb;
+    width: 100%;
+    z-index: 4;
+    // height: 50px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center; //flex纵轴居中
+    .dsmall {
+        font-size: 30px;
+        padding: 0 2px 0 4px;
+        // margin-top: 3px;
+        // height: 22px;
+        text-align: center;
+        box-sizing: border-box;
+        i {
+            color: $mainColor;
+        }
+    }
+    .gg2 {
+        height: 50px;
+        overflow: hidden;
+        white-space: nowrap;
+        ul {
+            height: 100%;
+            overflow: hidden;
+            margin-bottom: 0px;
+            white-space: nowrap;
+            color: #e24e49;
+            padding: 0;
+            li {
+                // height: 28px;
+                // line-height: 28px;
+                padding: 0 10px;
+                text-align: center;
+                display: inline-block;
+                p {
+                    color: #e24e49;
+                    display: inline-block;
+                    padding: 0;
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
+
+#scroll_begin,
+#scroll_end {
+    display: inline-block;
+    overflow: hidden;
+}
+
+//小喇叭end
+
+/* 本例子css */
+
+.infoList {
+    height: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+.txtMarquee-left {
+    font-size: 28px;
+    position: relative;
+    border-top: 1px solid #ccc;
+    /* no*/
+    border-bottom: 1px solid #ccc;
+    /* no*/
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+        zoom: 1;
+    }
+    .hd {
+        margin: 0px;
+        // background-color: red;
+        /* overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;  */
+        padding: 1% 2%;
+        width: 26%;
+        float: left;
+        // display: inline-block;
+        span {
+            background: url(../../images/topline.png) no-repeat 50% 50%/contain;
+            width: 100%;
+            height: 48px;
+            display: block;
+            // background-color: orange;
+            padding: 0;
+        }
+        .prev,
+        .next {
+            display: block;
+            width: 5px;
+            height: 9px;
+            float: right;
+            margin-right: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            cursor: pointer;
+            /* background:url("../images/arrow.png") no-repeat; */
+        }
+        .next {
+            background-position: 0 -50px;
+        }
+        .prevStop {
+            background-position: -60px 0;
+        }
+        .nextStop {
+            background-position: -60px -50px;
+        }
+    }
+    .bd {
+        margin: 0px;
+        // background-color: blue;
+        padding: 1% 2%;
+        width: 72%;
+        // display: inline-block;
+        float: left;
+        .tempWrap {
+            width: 100% !important;
+        }
+        /* 用 !important覆盖SuperSlide自动生成的宽度，这样就可以手动控制可视宽度。 */
+        ul {
+            overflow: hidden;
+            // height: 48px;
+            zoom: 1;
+            li {
+                margin-right: 60px;
+                // float: left;
+                height: 48px;
+                line-height: 48px;
+                text-align: left;
+                display: inline-block;
+                width: auto !important;
+                /* 用 width:auto !important 覆盖SuperSlide自动生成的宽度，解决文字不衔接问题 */
+                span {
+                    color: #999;
+                }
+                // background-color: yellow;
+            }
+        }
+    }
+}

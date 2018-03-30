@@ -1,0 +1,27 @@
+@import '../_base.scss';
+.myhead {
+    @include flex-row;
+    .headimg {
+        width: 180px;
+        height: 180px;
+    }
+    .usernick {
+        width: calc(100% - 2.4rem);
+    }
+}
+
+.mybody1 {
+    @include flex-row;
+    div {
+        width: 33.333%;
+        text-align: center;
+    }
+}
+
+.mybody2 {
+    @include flex-row;
+    div {
+        width: 50%;
+        text-align: center;
+    }
+}

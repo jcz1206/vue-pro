@@ -1,0 +1,48 @@
+.loginform {
+    color: #333;
+    text-align: center;
+    margin-top: 50px;
+    h6 {
+        font-size: 40px;
+    }
+    form {
+        font-size: 32px;
+        .inputdiv {
+            width: 90%;
+            border-bottom: solid 1px #ccc;
+            margin: 80px auto;
+        }
+        input {
+            width: 90%;
+            border: none;
+            -webkit-appearance: none;
+            outline: none;
+            font-size: 32px;
+            margin-bottom:1px;
+        }
+        button,
+        a {
+            width: 90%;
+            border-radius: 40px;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 auto;
+            font-size: .4rem;
+        }
+        button {
+            background: linear-gradient(to right, #d66b6b, #d32d27);
+            box-shadow: 0 3px 3px #d66b6b;
+            border: none;
+            -webkit-appearance: none;
+            outline: none;
+            color: #fff;
+        }
+        a {
+            display: block;
+            border: solid 1px #d32d27;
+            /*no*/
+            color: #d32d27;
+            margin-top: 30px;
+        }
+    }
+}

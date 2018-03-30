@@ -1,0 +1,58 @@
+@import '../_base.scss';
+.prodlist {
+    >div {
+        @include flex-row;
+        padding: 2% 0;
+        border-bottom: solid 1px #ccc;
+        /*no*/
+    }
+    .prodimg {
+        width: 180px;
+        height: 180px;
+        background-color: $fontColor;
+    }
+    .prodcon {
+        width: calc(100% - 2.4rem); //570px;
+        height: 180px;
+        padding-left: 3px;
+        /*no*/
+    }
+    .prodname {
+        color: #333;
+        font-size: 32px;
+        // line-height: 34px;
+        height: 96px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .prodbottom {
+        @include flex-row;
+    }
+    .prodnumber {
+        width: 80%;
+        .prodprice {
+            font-size: 28px;
+            color: $mainColor;
+            font-weight: bolder;
+        }
+        .prodstock {
+            font-size: 26px;
+            color: #888;
+        }
+    }
+    .prodcart {
+        width: 20%;
+        height: 80px;
+        line-height: 80px;
+        color: $mainColor;
+        // text-align: center;
+        text-align: right;
+        padding-right: 40px;
+        i {
+            font-size: 48px;
+        }
+    }
+}
