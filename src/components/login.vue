@@ -54,23 +54,25 @@ export default {
       }
     },
     toLogin: function() {
-       //this.$store.commit('changeLogin','100')     //登录后改变登录状态 isLogin = 100 ；
-      this.axios.post('SFJ_M/wxJump/login1',{
-        phone:this.user.username,
-        password:this.user.password
-      }).then((response)=>{
-        if(response.retCode===0){
-          // this.$store.commit('changeLogin',100);
-          this.$store.dispatch('loginAndOut',100);
-        }else{
-          alert("登录失败");
-        }
-        console.log(response);
+      //  this.$store.commit('changeLogin','100')     //登录后改变登录状态 isLogin = 100 ；
+      sessionStorage.setItem('accessToken',1);
+        this.$router.push("/");
+      // this.axios.post('SFJ_M/wxJump/login1',{
+      //   phone:this.user.username,
+      //   password:this.user.password
+      // }).then((response)=>{
+      //   if(response.retCode===0){
+      //     // this.$store.commit('changeLogin',100);
+      //     this.$store.dispatch('loginAndOut',100);
+      //   }else{
+      //     alert("登录失败");
+      //   }
+      //   console.log(response);
 
-      }).catch((response)=>{
-        console.log("====");
-        console.log(response);
-      })
+      // }).catch((response)=>{
+      //   console.log("====");
+      //   console.log(response);
+      // })
     }
   }
 };
