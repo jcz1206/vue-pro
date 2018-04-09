@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/SFJ_M':{
-        target:'http://192.168.110.2:8050/SFJ_M',
+        target:'http://192.168.110.2:8070/SFJ_M',
         changeOrgin:true,
         pathRewrite:{
           '^/SFJ_M':''

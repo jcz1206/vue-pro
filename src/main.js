@@ -12,6 +12,7 @@ import '@/assets/css/base/reset.css'
 import '@/assets/bootstrap/css/bootstrap.min.css'
 //将css 放在app前面，css的加载顺序就不会有问题了
 import '@/assets/iconfonts/iconfont.css'
+// import '@/assets/stylus/index.styl'
 
 import 'lib-flexible/flexible'
 import App from './App'

@@ -17,3 +17,10 @@ $fontColor:#666;
 @mixin outlinenone {
     outline: none;
 }
+
+@mixin bg-img($url){
+    background-image:  url($url+"@2x.png");
+    @media(-webkit-device-pixel-ratio:3) ,(min-device-pixel-ratio){
+      background-image:url($url+"@3x.png");
+      }
+  }

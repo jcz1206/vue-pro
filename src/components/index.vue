@@ -71,6 +71,7 @@
             <!--活动-->
             <div>
               jjh
+              <div class="ceshitu"></div>
             </div>
         </div>
         <footbar></footbar>
@@ -192,17 +193,17 @@ export default {
     //   $('#share-3').share();
     // }
     getData: function() {
-      // this.axios.post('SFJ_M/indexPage/getIndexAdList').then((response)=>{
-      //   console.log(response);
+      this.axios.post('SFJ_M/indexPage/getIndexAdList').then((response)=>{
+        console.log(response);
+      }).catch((response)=>{
+        console.log("====");
+        console.log(response);
+      })
+
 
             this.swiperTool();
             // this.marqueeTool();
             this.scrollTrumpt();
-      // }).catch((response)=>{
-      //   console.log("====");
-      //   console.log(response);
-      // })
-
       // this.$http.get(staticPath+"/indexjson").then(
       //   response => {
       //     this.data = response.data;
