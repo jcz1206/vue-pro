@@ -193,12 +193,12 @@ export default {
     //   $('#share-3').share();
     // }
     getData: function() {
-      this.axios.post('SFJ_M/indexPage/getIndexAdList').then((response)=>{
-        console.log(response);
-      }).catch((response)=>{
-        console.log("====");
-        console.log(response);
-      })
+      // this.axios.post('SFJ_M/indexPage/getIndexAdList').then((response)=>{
+      //   console.log(response);
+      // }).catch((response)=>{
+      //   console.log("====");
+      //   console.log(response);
+      // })
 
 
             this.swiperTool();
@@ -252,7 +252,8 @@ export default {
           el: ".swiper-pagination",
           clickable: true,
           renderBullet: function(index, className) {
-            return '<span class="' + className + '">' + (index + 1) + "</span>";
+            //return '<span class="' + className + '">' + (index + 1) + "</span>";
+            return `<span class="${className}"></span>`;
           }
         }
       });
@@ -267,18 +268,26 @@ export default {
       });
       // jQuery(".txtMarquee-left").slide( { mainCell:".bd ul", autoPlay:true,effect:'leftMarquee',vis:3,interTime:50,opp:false,pnLoop:true,trigger:click,mouseOverStop:true  });
     },
+    hideTrumpt: () => {
+      sessionStorage.showTrump = 1;
+      // document.getElementsByClassName("trumpt")[0].style.display="none";
+      document.querySelector(".trumpt").style.display="none";
+      // $(".trumpt").hide();
+    },
     scrollTrumpt: () => {
       if (null == sessionStorage.showTrump || "" == sessionStorage.showTrump) {
         if (this.trumpt != []) {
           let speed = 50;
-          var scroll_div = $("#scroll_div")[0],
-            scroll_begin = $("#scroll_begin")[0],
-            scroll_end = $("#scroll_end");
+          var scroll_div =document.getElementById("scroll_div"),// $("#scroll_div")[0],
+            scroll_begin = document.getElementById("scroll_begin"),//$("#scroll_begin")[0],
+            scroll_end = document.getElementById("scroll_end");//$("#scroll_end");
 
           var linum = Math.round(
             scroll_div.offsetWidth / scroll_begin.offsetWidth
           ); //有几个消息长度
           console.log(linum);
+          
+            // var  newHtml = "";
           if (linum > 1) {
             var lic = 0,
               newHtml = "";
@@ -288,7 +297,8 @@ export default {
             }
             scroll_begin.innerHTML = newhtml;
           }
-          scroll_end.append(scroll_begin.innerHTML);
+          scroll_end.innerHTML=scroll_begin.innerHTML;
+          // scroll_end.append(scroll_begin.innerHTML);
           var marqueeFn = () => {
             if (scroll_begin.offsetWidth > scroll_div.scrollLeft) {
               scroll_div.scrollLeft++;
@@ -297,15 +307,10 @@ export default {
             }
           };
           setInterval(marqueeFn, speed);
-        } else {
         }
       } else {
         this.hideTrumpt();
       }
-    },
-    hideTrumpt: () => {
-      sessionStorage.showTrump = 1;
-      $(".trumpt").hide();
     }
   }
 };

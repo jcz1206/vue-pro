@@ -77,17 +77,17 @@ module.exports = {
         net: 'empty',
         tls: 'empty',
         child_process: 'empty'
-    },
-    plugins: [
-        // new ExtractTextPlugin('[name].css'),
-        // new ExtractTextPlugin("style.css"),
-        // new webpack.optimize.CommonsChunkPlugin('common.js'),
-        new webpack.ProvidePlugin({
-            jQuery: "jquery",
-            $: "jquery",
-            "window.jQuery": "jquery"
-                // ,
-                // "slide":'jquery.SuperSlide.2.1.2'
-        })
-    ]
+    }//,
+    // plugins: [
+    //     // new ExtractTextPlugin('[name].css'),
+    //     // new ExtractTextPlugin("style.css"),
+    //     // new webpack.optimize.CommonsChunkPlugin('common.js'),
+    //     new webpack.ProvidePlugin({
+    //         jQuery: "jquery",
+    //         $: "jquery",
+    //         "window.jQuery": "jquery"
+    //             // ,
+    //             // "slide":'jquery.SuperSlide.2.1.2'
+    //     })
+    // ]
 }

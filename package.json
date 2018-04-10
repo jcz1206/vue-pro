@@ -79,8 +79,17 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+      "last 6 versions",
+      "ie >= 9",
+      "ff >= 15",
+      "Android >= 3.2",
+      "ios >= 6.0",
+      "Firefox >= 20",
+      "Safari >= 6.0"
+  ],
+  "browserslist-old": [
+      "> 1%",
+      "last 2 versions",
+      "not ie <= 8"
   ]
 }

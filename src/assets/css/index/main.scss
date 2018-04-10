@@ -147,22 +147,24 @@ header {
         overflow: hidden;
         white-space: nowrap;
         ul {
-            height: 100%;
-            overflow: hidden;
+            // height: 100%;
+            // overflow: hidden;
             margin-bottom: 0px;
-            white-space: nowrap;
+            // white-space: nowrap;
             color: #e24e49;
             padding: 0;
             li {
-                // height: 28px;
+                height: 28px;
                 // line-height: 28px;
                 padding: 0 10px;
                 text-align: center;
-                display: inline-block;
+                // display: inline-block;
+                display: table-cell;
                 p {
                     color: #e24e49;
-                    display: inline-block;
+                    // display: inline-block;
                     padding: 0;
+                    margin:0;
                     height: 50px;
                     line-height: 50px;
                     font-size: 28px;
@@ -174,8 +176,8 @@ header {
 
 #scroll_begin,
 #scroll_end {
-    display: inline-block;
-    overflow: hidden;
+    // display: inline-block;
+    // overflow: hidden;
 }
 
 //小喇叭end
@@ -274,5 +276,9 @@ header {
 }
 
 .ceshitu{
-    @include  bg-img('../images/duihao');
+    @include bg-img('../../images/icon/duihao');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:30px;
+    height:30px;
 }

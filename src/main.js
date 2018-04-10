@@ -15,6 +15,9 @@ import '@/assets/iconfonts/iconfont.css'
 // import '@/assets/stylus/index.styl'
 
 import 'lib-flexible/flexible'
+import $ from 'jquery'
+window.jQuery = $;
+window.$ = $;
 import App from './App'
 import store from './store/store'
 import router from './router'
