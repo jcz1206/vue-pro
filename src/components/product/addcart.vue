@@ -94,7 +94,7 @@ export default {
         },
         showProd:function(){ 
            var spu=this.selectSpu;    
-            var skuList=spu.skuList; 
+            var skuList=spu.sku; 
             
             // this.buyNum=1; 
             this.selectProd=skuList[0]; 
@@ -116,7 +116,7 @@ export default {
 
             this.defProd=spuProd;
 
-            this.selectSpu={};//map
+            // this.selectSpu={};//map
             var newSkuList={};//map
             var attrList=[];//用于展示属性排列
             var attrIds=[];
