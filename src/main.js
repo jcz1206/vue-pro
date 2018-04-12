@@ -18,6 +18,18 @@ import 'lib-flexible/flexible'
 import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;
+// import layer from 'vue-layer'
+// Vue.prototype.$layer = layer(Vue);
+// import 'vue-layer-mobile/need/layer.css'
+// import layer from 'vue-layer-mobile'
+// Vue.use(layer)
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+    error:'./static/cry.png',
+    loading:'./static/loading.gif'
+})
+require("./assets/lib/layer/mobile/need/layer.css");
+require("./assets/lib/layer/mobile/layer.js");
 import App from './App'
 import store from './store/store'
 import router from './router'

@@ -116,17 +116,17 @@ export default {
               ],
               category: [
                 {
-                  title: "天猫",
+                  title: "商品列表",
                   img: require("@/assets/images/category/1.png"),
                   url:
-                    "https://www.tmall.com/?locate=icon-1&spm=a215s.7406091.icons.1&scm=2027.1.2.1000&force=m&wh_from=tbc#/main",
+                    "/productlist",
                   type: 0
                 },
                 {
-                  title: "聚划算",
+                  title: "商品列表",
                   img: require("../assets/images/category/2.png"),
                   url:
-                    "https://jhs.m.taobao.com/m/index.htm?locate=icon-2&spm=a215s.7406091.icons.2&scm=2027.1.2.1001",
+                    "/productlist",
                   type: 0
                 },
                 {
@@ -234,8 +234,13 @@ export default {
       //   }
       // );
     },
-    search: () => {
-      layer.alert("搜索内容是" + $(event.currentTarget).val());
+    search: function(){
+      // layer.toast({
+      //   icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中 
+      //   content: $(event.currentTarget).val(),
+      //   time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒 
+      // })
+      layer.alert("搜索内容是" + event.currentTarget.value);
     },
     swiperTool: () => {
       new Swiper(".swiper-container", {

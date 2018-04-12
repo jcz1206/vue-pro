@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cate-div">
     <div  class="head">
         <div class="categorylist">
             <div class="nav2">
@@ -34,16 +34,34 @@ export default {
   data(){
       return {
           data:{
-              category:[{
+              category:[
+              {
+                id:"c003",
+                catename:"木" ,
+                child:[
+                  {
+                    id:"c003001",
+                    catename:"木工板"
+                  },
+                  {
+                    id:"c003002",
+                    catename:"多层板"
+                  },
+                  {
+                    id:"c003003",
+                    catename:"石膏板"
+                  }
+                ]
+              },{
                 id:"c001",
                 catename:"水",
                 child:[
                     {
-                id:"001001",
+                id:"c001001",
                 catename:"水1"  
                     },
                     {
-                id:"001001",
+                id:"c001001",
                 catename:"水2"  
                     }
                 ]
@@ -51,10 +69,6 @@ export default {
               {
                 id:"c002",
                 catename:"电" 
-              },
-              {
-                id:"c003",
-                catename:"木" 
               },
               {
                 id:"c004",
