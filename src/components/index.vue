@@ -5,7 +5,7 @@
             <header>
                 <div class="header-wrap">
                     <form>
-                        <div class="site">南京1站<i class="icon iconfont icon-xiala"></i></div>
+                        <div class="site">南京站<i class="icon iconfont icon-xiala"></i></div>
                         <i class="icon iconfont icon-sousuo"></i>
                         <input type="search" class="search" @search="search()">
                     </form>
@@ -20,7 +20,7 @@
                     <div id="scroll_begin">
                         <ul id="au">
                             <li v-for="item in data.trumpt" >
-                                <a href="http://www.SuperSlide2.com" target="_blank">
+                                <a href="#" target="_blank">
                                     <p>{{item.title}}</p>
                                 </a>
                             </li>
@@ -70,8 +70,8 @@
             </div>
             <!--活动-->
             <div>
-              jjh
-              <div class="ceshitu"></div>
+              
+              <!-- <div class="ceshitu"></div> -->
             </div>
         </div>
         <footbar></footbar>
@@ -99,7 +99,7 @@ export default {
       // data: null
         data: {
               trumpt: [
-                { title: "1快递盒子千万别扔2", url: "", type: 0 },
+                { title: "学习学习学习学习学习学习学习学习学习学习学习学习", url: "", type: 0 },
                 { title: "3华为华为华为哈弗哈弗哈弗哈弗哈弗4", url: "", type: 0 },
                 { title: "5全面屏全面屏全面屏全面屏全面屏全面屏全面屏全面屏全面屏全面屏6", url: "", type: 0 },
                 {
@@ -116,66 +116,65 @@ export default {
               ],
               category: [
                 {
-                  title: "商品列表",
-                  img: require("@/assets/images/category/1.png"),
+                  title: "木[点击跳转]",
+                  img: require("@/assets/images/category/3.png"),
                   url:
-                    "/productlist",
+                    "/productlist/c003",
                   type: 0
                 },
                 {
-                  title: "商品列表",
+                  title: "水[点击跳转]",
                   img: require("../assets/images/category/2.png"),
                   url:
-                    "/productlist",
+                    "/productlist/c001",
                   type: 0
                 },
                 {
-                  title: "天猫国际",
-                  img: require("../assets/images/category/3.png"),
-                  url:
-                    "https://pages.tmall.com/wow/import/17151/tmallglobal?locate=icon-3&spm=a215s.7406091.icons.3&scm=2027.4.1.16",
+                  title: "电[点击跳转]",
+                  img: require("../assets/images/category/1.png"),
+                  url: "/productlist/c001",
                   type: 0
                 },
                 {
-                  title: "外卖",
+                  title: "xxxxxxxxx",
                   img: require("../assets/images/category/4.png"),
                   url:
-                    "https://market.m.taobao.com/apps/pm/paimai/index.html?wh_weex=true&wx_navbar_transparent=true&data_prefetch=true&locate=icon-9&spm=a215s.7406091.icons.9&scm=2027.1.2.10060000",
+                    "#",
                   type: 0
                 },
                 {
-                  title: "天猫超市",
+                  title: "xxxxxx",
                   img: require("../assets/images/category/5.png"),
                   url:
-                    "https://chaoshi.m.tmall.com/?locate=icon-5&spm=a215s.7406091.icons.5&scm=2027.1.2.1007&_ig=shoutao",
+                    "#",
                   type: 0
                 },
                 {
-                  title: "天猫",
-                  img: require("@/assets/images/category/1.png"),
+                  title: "xxxxxxx",
+                  img: require("@/assets/images/category/3.png"),
                   url: "",
                   type: 0
                 },
                 {
-                  title: "聚划算",
+                  title: "xxxx",
                   img: require("../assets/images/category/2.png"),
                   url: "",
                   type: 0
                 },
                 {
-                  title: "天猫国际",
-                  img: require("../assets/images/category/3.png"),
+                  title: "xxxx",
+                  img: require("../assets/images/category/1.png"),
                   url: "",
                   type: 0
                 },
                 {
-                  title: "外卖",
+                  title: "xxxxxxx",
                   img: require("../assets/images/category/4.png"),
                   url: "",
                   type: 0
                 },
                 {
-                  title: "天猫超市",
+                  title: "xxxxxxx",
                   img: require("../assets/images/category/5.png"),
                   url: "",
                   type: 0

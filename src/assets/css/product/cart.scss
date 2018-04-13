@@ -1,0 +1,146 @@
+
+
+.cartbuy .footer {
+  height: 1.307rem;
+  margin-top: .8rem;
+  cursor: pointer;
+}
+.f-fx {
+  padding-bottom: calc(constant(safe-area-inset-bottom) * 2);
+  background-color: #FFF;
+  border-top: none!important;
+}
+.cartbuy .footer .f-fx {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 1.35rem;
+  border-top: .8rem solid transparent;
+} 
+
+.cartbuy .footer .f-fx {
+  z-index: 2;
+} 
+.cartbuy .footer .f-fx>div {
+  width: 100%;
+  height: 1.307rem;
+  background: #fff;
+  border-top: 1px solid #e7e7e7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cartbuy .footer .ft-cb {
+  width: 1.173rem;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+} 
+.o-t-cb {
+  display: none;
+}
+.o-t-cb+label {
+  width: .533rem;
+  height: .533rem;
+  background: url('../../images/icon/yuan.png') no-repeat;
+  background-size: .52rem;
+  margin-bottom: 0;
+}
+.o-t-cb:checked+label {
+  background: url('../../images/icon/duihao.png') no-repeat;
+  background-size: .52rem;
+}
+
+.o-t-item .o-t-cb:checked + label{
+  background: url('../../images/icon/duihao.png') no-repeat;
+  background-size: .52rem;
+}
+
+.o-t-cb+label, .o-t-cb+label:after {
+  display: inline-block;
+  cursor: pointer;
+}
+.o-t-cb+label:after {
+  content: '';
+  position: absolute;
+  width: 1.6rem;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.o-t-cb+label, .o-t-cb+label:after {
+  display: inline-block;
+  cursor: pointer;
+}
+[data-dpr="2"] .cartbuy .footer .qx {
+  font-size: 32px;
+}
+
+.cartbuy .footer .qx {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cartbuy .footer .pay {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cartbuy .footer .pay>div {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right;
+}
+.o-t-price {
+  color: #f50;
+  display: inline;
+}
+.o-t-price:before {
+  content: attr(data-symbol);
+  display: inline-block;
+}
+.cartbuy .footer .btn {
+  width: 2.773rem;
+  color: #fff;
+  background: #f50;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: .32rem;
+  border-radius:0;
+}
+.cartbuy .footer .btn p {
+  // font-size: 28px;
+  font-size:.4rem;
+}

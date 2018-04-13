@@ -1,6 +1,6 @@
 @import '../_base.scss';
 .prodlist {
-    margin-top:126px;
+    margin-top:150px;
     >div {
         @include flex-row;
         padding: 2% 0;
@@ -51,7 +51,7 @@
     .prodcart {
         width: 20%;
         height: 80px;
-        line-height: 80px;
+        // line-height: 80px;
         color: $mainColor;
         // text-align: center;
         text-align: right;
@@ -275,6 +275,7 @@ p{ margin:0;}
 }
 .ctrl-ui-sku ul {
     margin-top: -.24rem;
+    margin-bottom:0;
 }
 .o-skupop-btm .ctrl-ui-sku ul li.normal {
     background: #f9f9f9;
@@ -405,10 +406,32 @@ ctrl-ui-sku .sku-btns {
 .ctrl-ui-sku .sku-btns .addcart {
     background: #f90;
 }
+.ctrl-ui-sku .sku-btns .addcart.off,.ctrl-ui-sku .sku-btns .gobuy.off{
+    background: #cfcfcf;
+}
 
 .addcart, .back, .btn, .gobuy, .sku-btn, .sku-info li {
     cursor: pointer;
 }
 
 // :root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;box-sizing:border-box;text-rendering:optimizeLegibility}
-:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;box-sizing:border-box;font:.213333rem/1.5 sans-serif;text-rendering:optimizeLegibility}
+//修改滚轴 和 滑动时，弹层底下的div滚动问题
+:root{
+    -ms-overflow-style:-ms-autohiding-scrollbar;
+    overflow-y:scroll;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+    text-size-adjust:100%;
+    box-sizing:border-box;
+    font:.213333rem/1.5 sans-serif;
+    text-rendering:optimizeLegibility
+}
+
+.o-skupop-btm .ctrl-ui-sku ul li.normal.on {
+    color: #fff;
+    background: #f60;
+}
+.o-skupop-btm .ctrl-ui-sku ul li.normal.disabled {
+    color: #cfcfcf;
+}
+

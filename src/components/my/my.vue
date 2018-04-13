@@ -7,7 +7,7 @@
               <p>名称 <i>等级</i></p>
           </div>
       </div>
-      <div class="mybody1">
+      <!-- <div class="mybody1">
           <div>信用</div>
           <div>优惠券</div>
           <div>钱包</div>
@@ -17,7 +17,7 @@
           <div>收货管理</div>
           <div><a href="#/setting">设置</a></div>
           <div>企业绑定</div>
-      </div>
+      </div> -->
       
       <a class="out" href="javascript:;" @click="loginOut()">退出</a>
   </div>
@@ -27,7 +27,8 @@ import '../../assets/css/my/my.scss';
 export default {
   methods:{
       loginOut:function(){
-          
+        sessionStorage.removeItem('accessToken');
+        this.$router.push("/");
           //this.$store.commit('changeLogin','0'); 
         //   this.axi.post("/loginOut",{}).then(
         //       respose=>{

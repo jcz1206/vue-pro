@@ -3,7 +3,7 @@
     <div  class="head">
         <div class="categorylist">
             <div class="nav2">
-                <a v-for="item in data.category" v-on:click="onClickMe(item.id)">{{item.catename}}</a>
+                <a v-for="item in data.category" v-on:click="onClickMe(item.id)" :class="{'on':cateid.indexOf(item.id)==0}">{{item.catename}}</a>
             </div>
         </div>
         <div class="search"><i class="icon iconfont icon-sousuo"></i></div>
@@ -92,7 +92,7 @@ export default {
   methods:{
     onClickMe: function(id){
       // console.log(id);
-      $(event.currentTarget).addClass("on").siblings("a").removeClass("on");
+      // $(event.currentTarget).addClass("on").siblings("a").removeClass("on");
       this.$parent.cateid=id;
       this.$parent.getProductlist(id);
       // console.log(this.$parent);  //访问根组件  

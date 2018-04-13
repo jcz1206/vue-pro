@@ -24,8 +24,10 @@ export default {
   data() {
     return {
       user: {
-        username: "15951954933",
-        password: "666666"
+        // username: "15951954933",
+        // password: "666666"
+        username: "loginname",
+        password: "loginpassword"
       }
     };
   },

@@ -26,3 +26,18 @@
         text-align: center;
     }
 }
+
+.out{
+    position: absolute;
+    bottom: 40px;
+    width: 94%;
+    margin-left: 3%;
+    background: #d32d27;
+    text-align: center;
+    border-radius: 20px;
+    color:#fff;
+    padding:15px 0;
+}
+a.out:active,a.out:link{
+    color:#fff;
+}

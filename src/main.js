@@ -6,6 +6,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Qs from 'qs'
+import Vuex from 'vuex'
 
 import '@/assets/css/base/reset.css'
 // import '@/assets/css/normalize.css'
@@ -36,6 +37,7 @@ import router from './router'
 
 
 Vue.config.productionTip = false //关闭生产模式下给出的提示
+
 
 
 // #创建一个axios实例

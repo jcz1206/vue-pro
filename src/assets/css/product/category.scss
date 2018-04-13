@@ -2,6 +2,7 @@
 .cate-div{
     position: fixed;
     top:0;
+    width: 100%;
 }
 .head {
     background-color: $mainColor;
@@ -45,10 +46,10 @@
             // height: 50px;
             width: auto;
             a {
-                width: 120px;
-                height: 70px;
+                width: 150px;
+                height: 80px;
                 // /*px*/
-                line-height: 70px;
+                line-height: 80px;
                 // /*px*/
                 text-align: center;
                 color: #fff;
@@ -112,7 +113,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        height: 60px;
+        height: 70px;
         align-items: center; //flex纵轴居中
         color: $fontColor;
         border-bottom: solid 1px #ccc;

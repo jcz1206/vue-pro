@@ -1,45 +1,119 @@
 <template>
 <div>
-    <category v-on:child-say="listenToMyBoy" :cateid="cateid"></category>
-    <!-- =={{cateid}}== -->
-    <!-- <div v-for="item in data" v-if="item.cateid==cateid">
-        {{item.spuname}}
-    </div> -->
+  <div>Vuex临时存储,仅学习vuex</div>
     <div class="prodlist">
-        <div v-for="item in productlist" @key="item.spuid" >
+        <div v-for="item in productlist" @key="item.id" >
+          
+            <div class="ft-cb o-t-item" >
+              <p >
+                
+                  <input :id="'cb-'+item.id"  type="checkbox" class="cb o-t-cb">
+                <label :for="'cb-'+item.id" >
+                </label>
+              </p>
+            </div>
             <div class="prodimg">
-                <img v-lazy="item.sku[0].img"/>
+                <img v-lazy="item.img"/>
             </div>
             <div class="prodcon">
-                <div class="prodname">{{item.spuname}}</div>
+                <div class="prodname">{{item.name}}</div>
                 <!-- <div class="prodname">guige</div> -->
                 <div class="prodbottom">
                     <div class="prodnumber">
-                        <div class="prodprice">￥{{item.sku[0].salePrice}}</div>
+                        <div class="prodprice">￥{{item.salePrice}}</div>
                         <div class="prodstock">库存：{{item.stock}}</div>
                         <!-- {{item|sumStock}}| -->
                     </div>
-                    <div class="prodcart" @click="addCart(item)"><i class="icon iconfont icon-gouwuchetianjia"></i></div>
+                    <!-- <div class="prodcart" @click="addCart(item)"><i class="icon iconfont icon-gouwuchetianjia"></i></div> -->
+                    <div class="prodcart ctrl-ui-sku">
+                      <div class="sku-quantity">
+                        <p class="btn-minus" :class="{'off':isoffm===0}"  @click="clickChangeBuyNum(0)"><a class="btn minus" min=""></a></p>
+                        <p class="btn-input"><input type="tel" value="1" @blur="checkBuyNum()"></p>
+                        <p class="btn-plus"  :class="{'off':isoffp===0}" @click="clickChangeBuyNum(1)"><a class="btn plus" max=""></a></p>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div v-if="productlist.length==0">
-            暂无商品
+            <router-link to="productlist/c003">暂无商品，去商品选择商品吧</router-link>
         </div>
     </div>
-    <addcart v-if="selectedProd!=null" :selectedSpu="selectedProd" ></addcart>
+    
+        <div class="cartbuy">
+            <div class="footer" >
+              <div class="f-fx" >
+                <div>
+                  <div class="ft-cb" >
+                    <p >
+                      <input id="cb-footer" type="checkbox" class="cb o-t-cb">
+                      <label for="cb-footer" ></label>
+                    </p>
+                  </div>
+                  <div class="qx" >全选</div>
+                  <div class="pay" >
+                    <div >
+                      <div  >
+                        <span class="hj" >合计：</span>
+                        <p class="o-t-price" data-symbol="￥" >
+                          <span >
+                            <span class="major" >0</span>
+                            <span class="point" >.</span>
+                            <span class="minor" >00</span>
+                          </span>
+                        </p>
+                      </div>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="btn" >
+                    <p>
+                      <span>结算</span>
+                      <span>(</span>
+                      <span>0</span>
+                      <span>)</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        <footbar></footbar>
 </div>
 </template>
+<style scoped lang="scss">
+.prodlist .prodnumber,.prodlist .prodcart{ width:50%;}
+.prodlist {
+    margin-bottom:60px;
+}
+
+.prodlist .prodimg{
+    width: 2rem;
+    height: 2rem;
+}
+.prodlist .ft-cb{
+  width:.8rem;
+  text-align: center;
+  padding-top: .3rem;
+  height: 1.2rem;
+}
+.prodlist .prodcon {
+    width: -webkit-calc(100% - 2.8rem);
+    width: -moz-calc(100% - 2.8rem);
+    width: calc(100% - 2.8rem);
+}
+.prodlist .o-t-cb + label:after {
+    height:1.2rem;
+}
+</style>
 <script>
-import '@/assets/css/base/common.scss'
-import '@/assets/css/product/productlist.scss'
-import category from "@/components/product/category.vue";
-import addcart from "@/components/product/addcart.vue";
+import { mapGetters } from 'vuex'
+import footbar from "@/components/footbar.vue";
+import "@/assets/css/product/cart.scss"
 export default{
-    name:"productlist",
+    name:"cartlist",
     components:{
-        category,
-        addcart
+      footbar
     },
     data(){
         return {
@@ -59,10 +133,15 @@ export default{
             return stock;
         }
     },
+    created:function(){
+      this.productlist=this.$store.state.cart;
+      console.log(this.productlist);
+    },
     mounted:function(){   
+      // console.log(this.$store.state.cart);
         // document.querySelector('.nav2 a').dispatchEvent(new Event('click'));
         // console.log(this.$route.params.cid);
-        this.getProductlist(this.cateid);
+        // this.getProductlist(this.cateid);
     },
     methods:{
         addCart:function(spu){
@@ -377,19 +456,3 @@ export default{
                     }]
                 }]
 </script>
-
-<!--
-            /*
-            // this.axio({
-            //     url:"/static/json/products.json",
-            //     dataType:"json",
-            //     success:(response)=>{
-            //         this.data=response.data;
-            //     },
-            //     error:(response)=>{
-            //         layer.alert("报错啦");
-            //     }
-            // })
-            */
-            -->
-

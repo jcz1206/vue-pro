@@ -8,6 +8,7 @@ import newLogin from '@/components/login'
 import productlist from '@/components/product/productlist'
 import my from '@/components/my/my'
 import setting from '@/components/my/setting'
+import mycart from '@/components/mycart/mycart'
 
 //import store from '@/store/store.js'
 
@@ -29,6 +30,14 @@ const routes = [{
             component: newIndex
         },
         {
+            path: '/index',
+            name: 'newIndex',
+            meta: {
+                requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
+            },
+            component: newIndex
+        },
+        {
             path: '/regist',
             name: 'regist',
             component: regist
@@ -39,7 +48,7 @@ const routes = [{
             component: newLogin
         },
         {
-            path: '/productlist',
+            path: '/productlist/:cid',
             name: 'productlist',
             component: productlist
         },
@@ -55,6 +64,11 @@ const routes = [{
             path: '/setting',
             name: 'setting',
             component: setting
+        },
+        {
+            path: '/mycart',
+            name: 'mycart',
+            component: mycart
         }
     ] //,
 
@@ -82,7 +96,9 @@ router.beforeEach((to, from, next) => {
             　　　　　　
             next({ path: '/newLogin', query: { Rurl: to.fullPath } })　　　　　
         }　　　
-    } else {　　　　　　 next()　　 }
+    } else {　　　　　　 
+        next()　　 
+    }
 })
 
 export default router;
