@@ -50,9 +50,9 @@
               <div class="quantity-info">
                 <div class="sku-quantity">
                   <h2>购买数量 <span></span></h2>
-                  <p class="btn-minus" :class="{'off':isoffm===0}"  @click="clickChangeBuyNum(0)"><a class="btn minus" min=""></a></p>
+                  <p class="btn-minus" :class="{'off':buyNum<=0}"  @click="clickChangeBuyNum(0)"  @touchend="touchChangeBuyNum(0)"><a class="btn minus" min=""></a></p>
                   <p class="btn-input"><input type="tel" v-model="buyNum" @blur="checkBuyNum()"></p>
-                  <p class="btn-plus"  :class="{'off':isoffp===0}" @click="clickChangeBuyNum(1)"><a class="btn plus" max=""></a></p>
+                  <p class="btn-plus"  :class="{'off':buyNum>=selectProd.stock}" @click="clickChangeBuyNum(1)"  @touchend="touchChangeBuyNum(1)"><a class="btn plus" max=""></a></p>
                 </div>
               </div>
             </div>                  
@@ -82,8 +82,8 @@ export default {
               changeSaleAttr:null,//选择商品属性 用于判断去灰化哪些不能选择的属性值
               selectAttrList:[],//选中的销售属性列表
               buyNum:1, //加入购物车的个数
-              isoffm:0,//购买的数量 0不能减 1能减
-              isoffp:1,//购买的数量 0不能加 1能加
+            //   isoffm:0,//购买的数量 0不能减 1能减
+            //   isoffp:1,//购买的数量 0不能加 1能加
       }
   },
   created:function(){
@@ -311,7 +311,7 @@ export default {
             if(this.buyNum>this.selectProd.stock){
                 this.buyNum=this.selectProd.stock;
             }
-            this.changeBtnStyle();
+            // this.changeBtnStyle();
         },
         clickChangeBuyNum:function(type){//点击改变购买个数 
             this.changeBuyNum(type); 
@@ -328,47 +328,57 @@ export default {
             }
         },
         changeBuyNum:function(type){//点击改变购买个数        
-            // if(!$(event.currentTarget).hasClass("off")) {
-                if (type == 0&&this.isoffm==1) {
+            if(!$(event.currentTarget).hasClass("off")) {
+                if (type == 0) {
                     if (this.buyNum > 1) {
                         this.buyNum = parseInt(this.buyNum) - 1;
                     }
-                this.changeBtnStyle();
-                } else if(this.isoffp==1){
+                } else {
                     if (this.buyNum < this.selectProd.stock) {
                         this.buyNum = parseInt(this.buyNum) + 1;
                     }
-                this.changeBtnStyle();
                 }
-            // }
+                // this.changeBtnStyle();
+            }
         },
-        changeBtnStyle:function(){
-                if (this.buyNum > 1) {
-                    this.isoffm=1;
-                    // $(".btn-minus").removeClass("off");
-                }else{
-                    this.isoffm=0;
-                    // $(".btn-minus").addClass("off");
-                }
-                if (this.buyNum < this.selectProd.stock) {
-                    this.isoffp=1;
-                    // $(".btn-plus").removeClass("off");
-                }else{
-                    this.isoffp=0;
-                    // $(".btn-plus").addClass("off");
-                }
-        },
+        // changeBtnStyle:function(){
+                // if (this.buyNum > 1) {
+                //     this.isoffm=1;
+                //     // $(".btn-minus").removeClass("off");
+                // }else{
+                //     this.isoffm=0;
+                //     // $(".btn-minus").addClass("off");
+                // }
+                // if (this.buyNum < this.selectProd.stock) {
+                //     this.isoffp=1;
+                //     // $(".btn-plus").removeClass("off");
+                // }else{
+                //     this.isoffp=0;
+                //     // $(".btn-plus").addClass("off");
+                // }
+        // },
         addCartAction:function(){
             if(this.selectProd.stock>0){
                 if (Object.keys(this.selectAttrList).length == this.selectAttrGroup.length) {
-                    this.$store.dispatch('cartadd', this.selectProd);
+                    if(!this.$store.state.cart.includes(this.selectProd)){
+                        this.selectProd.sel=false;
+                        this.selectProd.selCount=this.buyNum;
+                        this.$store.dispatch('cartadd', this.selectProd);                    
+                        // console.log(this.$store.state.cart)
+                        layer.open({
+                            content: '添加成功!'
+                            ,skin: 'msg'
+                            ,time: 2 //2秒后自动关闭
+                        });
+                    }else{
                     
-                    // console.log(this.$store.state.cart)
-                    layer.open({
-                        content: '添加成功!'
-                        ,skin: 'msg'
-                        ,time: 2 //2秒后自动关闭
-                    });
+                        // console.log(this.$store.state.cart)
+                        layer.open({
+                            content: '已经在购物车中了!'
+                            ,skin: 'msg'
+                            ,time: 2 //2秒后自动关闭
+                        });
+                    }
                 }else{
                     // layer.msg("请选择商品");
                     layer.open({

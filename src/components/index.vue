@@ -116,66 +116,66 @@ export default {
               ],
               category: [
                 {
-                  title: "木[点击跳转]",
+                  title: "木[链接]",
                   img: require("@/assets/images/category/3.png"),
                   url:
                     "/productlist/c003",
                   type: 0
                 },
                 {
-                  title: "水[点击跳转]",
+                  title: "水[链接]",
                   img: require("../assets/images/category/2.png"),
                   url:
                     "/productlist/c001",
                   type: 0
                 },
                 {
-                  title: "电[点击跳转]",
+                  title: "电[链接]",
                   img: require("../assets/images/category/1.png"),
                   url: "/productlist/c001",
                   type: 0
                 },
                 {
                   title: "xxxxxxxxx",
-                  img: require("../assets/images/category/4.png"),
+                  img: "",//require("../assets/images/category/4.png"),
                   url:
                     "#",
                   type: 0
                 },
                 {
                   title: "xxxxxx",
-                  img: require("../assets/images/category/5.png"),
+                  img: "",//require("../assets/images/category/5.png"),
                   url:
                     "#",
                   type: 0
                 },
                 {
                   title: "xxxxxxx",
-                  img: require("@/assets/images/category/3.png"),
+                  img: "",//require("@/assets/images/category/3.png"),
                   url: "",
                   type: 0
                 },
                 {
                   title: "xxxx",
-                  img: require("../assets/images/category/2.png"),
+                  img: "",//require("../assets/images/category/2.png"),
                   url: "",
                   type: 0
                 },
                 {
                   title: "xxxx",
-                  img: require("../assets/images/category/1.png"),
+                  img: "",//require("../assets/images/category/1.png"),
                   url: "",
                   type: 0
                 },
                 {
                   title: "xxxxxxx",
-                  img: require("../assets/images/category/4.png"),
+                  img: "",//require("../assets/images/category/4.png"),
                   url: "",
                   type: 0
                 },
                 {
                   title: "xxxxxxx",
-                  img: require("../assets/images/category/5.png"),
+                  img: "",//require("../assets/images/category/5.png"),
                   url: "",
                   type: 0
                 }
@@ -289,7 +289,7 @@ export default {
           var linum = Math.round(
             scroll_div.offsetWidth / scroll_begin.offsetWidth
           ); //有几个消息长度
-          console.log(linum);
+          // console.log(linum);
           
             // var  newHtml = "";
           if (linum > 1) {
