@@ -27,7 +27,7 @@
                             </div>
                             <div class="prodcart ctrl-ui-sku">
                             <div class="sku-quantity">
-                                <p class="btn-minus" :class="{'off':item.selCount<=0}"  @click="clickChangeBuyNum(0,item,index)"  @touchend="touchChangeBuyNum(0,item,index)"><a class="btn minus" min=""></a></p>
+                                <p class="btn-minus" :class="{'off':item.selCount<=1}"  @click="clickChangeBuyNum(0,item,index)"  @touchend="touchChangeBuyNum(0,item,index)"><a class="btn minus" min=""></a></p>
                                 <p class="btn-input"><input type="tel" v-model="item.selCount" @blur="checkBuyNum(item,index)"></p>
                                 <p class="btn-plus"  :class="{'off':item.selCount>=item.stock}" @click="clickChangeBuyNum(1,item,index)"  @touchend="touchChangeBuyNum(1,item,index)"><a class="btn plus" max=""></a></p>
                             </div>
