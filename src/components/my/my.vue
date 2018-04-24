@@ -1,5 +1,6 @@
 <template>
   <div>
+      <backheader title="我的"></backheader>
       <!-- <router-link :to="setting">设置</router-link> -->
       <div class="myhead">
           <div class="headimg">头像</div>
@@ -24,7 +25,11 @@
 </template>
 <script>
 import '../../assets/css/my/my.scss';
+import backheader from "@/components/backheader.vue";
 export default {
+    components:{
+        backheader
+    },
   methods:{
       loginOut:function(){
         sessionStorage.removeItem('accessToken');

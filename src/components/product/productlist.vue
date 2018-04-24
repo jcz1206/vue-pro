@@ -23,11 +23,13 @@
                 </div>
             </div>
         </div>
+        <div class="pageBottom"></div>
         <div v-if="productlist.length==0">
             暂无商品
         </div>
     </div>
     <addcart v-if="selectedProd!=null" :selectedSpu="selectedProd" ></addcart>
+        <footbar></footbar>
 </div>
 </template>
 <script>
@@ -35,11 +37,13 @@ import '@/assets/css/base/common.scss'
 import '@/assets/css/product/productlist.scss'
 import category from "@/components/product/category.vue";
 import addcart from "@/components/product/addcart.vue";
+import footbar from "@/components/footbar.vue";
 export default{
     name:"productlist",
     components:{
         category,
-        addcart
+        addcart,
+        footbar
     },
     data(){
         return {
@@ -88,16 +92,22 @@ export default{
                         if(spu.cateid.indexOf(cateid)==0){
                             let skulist=spu.sku;
                             // console.log(skulist);
-                            let totalstock=skulist.reduce((previousValue=0, currentValue,index) => { 
-                                // if(typeof previousValue=="object"){
-                                if(index==1){
-                                    return previousValue.stock + currentValue.stock;
-                                }else{
-                                    return previousValue + currentValue.stock;
-                                }
-                            });
-                            spu.stock=totalstock;
+                            let totalstock=0;
+                            if(skulist.length>1){
+                                totalstock=skulist.reduce((previousValue=0, currentValue,index) => { 
+                                    // if(typeof previousValue=="object"){
+                                    if(index==1){
+                                        return previousValue.stock + currentValue.stock;
+                                    }else{
+                                        return previousValue + currentValue.stock;
+                                    }
+                                });
+                            }else{
+                                totalstock=skulist[0].stock;
+                            }
+                                spu.stock=totalstock;
                             this.productlist.push(spu);
+
                         }
                     });
             //     },
@@ -368,6 +378,78 @@ export default{
                             "attrName": "颜色",
                             "attrVId": "a0001001",
                             "attrVv": "白色"
+                        }, {
+                            "attrId": "10002",
+                            "attrName": "规格",
+                            "attrVId": "10002003",
+                            "attrVv": "30cm"
+                        }]
+                    }]
+                }, {
+                    "spuid": "c003004",
+                    "spuname": "纤维板4444444444",
+                    "cateid": "c003003",
+                    "img": "https://jcz1206.github.io/static/prod/13.jpg",
+                    "sku": [{
+                        "id": "c003004p001001",
+                        "name": "纤维板444444",
+                        "img": "hhttps://jcz1206.github.io/static/prod/14.jpg",
+                        "originPrice": "20.00",
+                        "salePrice": "16.00",
+                        "stock": 10,
+                        "saleAttr": [{
+                            "attrId": "a0001",
+                            "attrName": "颜色",
+                            "attrVId": "a0001002",
+                            "attrVv": "棕色"
+                        }, {
+                            "attrId": "10002",
+                            "attrName": "规格",
+                            "attrVId": "10002003",
+                            "attrVv": "30cm"
+                        }]
+                    }]
+                }, {
+                    "spuid": "c003005",
+                    "spuname": "纤维板55555555555",
+                    "cateid": "c003003",
+                    "img": "https://jcz1206.github.io/static/prod/13.jpg",
+                    "sku": [{
+                        "id": "c003005p001001",
+                        "name": "纤维板5555555",
+                        "img": "hhttps://jcz1206.github.io/static/prod/14.jpg",
+                        "originPrice": "20.00",
+                        "salePrice": "16.00",
+                        "stock": 10,
+                        "saleAttr": [{
+                            "attrId": "a0001",
+                            "attrName": "颜色",
+                            "attrVId": "a0001002",
+                            "attrVv": "棕色"
+                        }, {
+                            "attrId": "10002",
+                            "attrName": "规格",
+                            "attrVId": "10002003",
+                            "attrVv": "30cm"
+                        }]
+                    }]
+                }, {
+                    "spuid": "c003006",
+                    "spuname": "纤维板6666666666666",
+                    "cateid": "c003003",
+                    "img": "https://jcz1206.github.io/static/prod/13.jpg",
+                    "sku": [{
+                        "id": "c003006p001001",
+                        "name": "纤维板6666666",
+                        "img": "hhttps://jcz1206.github.io/static/prod/14.jpg",
+                        "originPrice": "20.00",
+                        "salePrice": "16.00",
+                        "stock": 10,
+                        "saleAttr": [{
+                            "attrId": "a0001",
+                            "attrName": "颜色",
+                            "attrVId": "a0001002",
+                            "attrVv": "棕色"
                         }, {
                             "attrId": "10002",
                             "attrName": "规格",

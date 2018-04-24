@@ -50,16 +50,16 @@
               <div class="quantity-info">
                 <div class="sku-quantity">
                   <h2>购买数量 <span></span></h2>
-                  <p class="btn-minus" :class="{'off':isoffm===0}"  @click="clickChangeBuyNum(0)"><a class="btn minus" min=""></a></p>
+                  <p class="btn-minus" :class="{'off':buyNum<=0}"  @click="clickChangeBuyNum(0)"  @touchend="touchChangeBuyNum(0)"><a class="btn minus" min=""></a></p>
                   <p class="btn-input"><input type="tel" v-model="buyNum" @blur="checkBuyNum()"></p>
-                  <p class="btn-plus"  :class="{'off':isoffp===0}" @click="clickChangeBuyNum(1)"><a class="btn plus" max=""></a></p>
+                  <p class="btn-plus"  :class="{'off':buyNum>=selectProd.stock}" @click="clickChangeBuyNum(1)"  @touchend="touchChangeBuyNum(1)"><a class="btn plus" max=""></a></p>
                 </div>
               </div>
             </div>                  
             <div>
               <div class="sku-btns">
-                <div class="sku-btn addcart" @click="addCartAction" :class="{'off':selectProd.stock<=0}">加入购物车</div>
-                <div class="sku-btn gobuy" :class="{'off':selectProd.stock<=0}">立即购买</div>
+                <div class="sku-btn addcart" @click="addCartAction" :class="{'off':judgeBuy}">加入购物车{{selectAttrGroup.length}}</div>
+                <div class="sku-btn gobuy" :class="{'off':judgeBuy}">立即购买{{Object.keys(this.selectAttrList).length}}</div>
               </div>
             </div>
           </div>
@@ -78,22 +78,41 @@ export default {
               selectProd:null,//将要加入购物车的商品仅用于页面展示
               defProd:null,//没有选择任何商品时，页面展示的商品数据信息(弹层中展示的数据)
               selectSpu:{},//将要加入购物车的产品 重构后的map接口 key是productid
-              selectAttrGroup:null,//选择商品属性 仅用于展示数据
+              selectAttrGroup:[],//选择商品属性 仅用于展示数据
               changeSaleAttr:null,//选择商品属性 用于判断去灰化哪些不能选择的属性值
               selectAttrList:[],//选中的销售属性列表
               buyNum:1, //加入购物车的个数
-              isoffm:0,//购买的数量 0不能减 1能减
-              isoffp:1,//购买的数量 0不能加 1能加
+              attrGroupCount:0,
+              selectAttrListLen:0,
+            //   isoffm:0,//购买的数量 0不能减 1能减
+            //   isoffp:1,//购买的数量 0不能加 1能加
+      }
+  },
+  computed:{
+      judgeBuy:function(){console.log(this.selectProd.stock);
+        //   console.log()
+            return (this.selectAttrListLen==this.attrGroupCount&&this.selectProd.stock<=0);
+            //以下这种需要计算的公式，实现不了效果
+            //总结以下就是computed中不能使用复杂的
+        //             我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是计算属性是基于它们的依赖进行缓存的。
+        // 计算属性只有在它的相关依赖发生改变时才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+        // 这也同样意味着下面的计算属性将不再更新，因为 Date.now() 不是响应式依赖：
+        // computed: {
+        //   now: function () {
+        //     return Date.now()
+        //   }
+        // }
+        // 相比之下，每当触发重新渲染时，调用方法将总会再次执行函数。
+        //   if(Object.keys(this.selectAttrList).length==this.selectAttrGroup.length&&this.selectProd.stock<=0){
+        //       return true;
+        //   }else{
+        //       return false;
+        //   }
       }
   },
   created:function(){
     this.showProd();
   },
-//   computed:{
-//       ...mapGetters:{
-
-//       }
-//   }
   methods:{
         closeSelect:function(){
           this.$parent.selectedProd=null;
@@ -104,8 +123,7 @@ export default {
             
             this.buyNum=1; 
             var spuProd={};
-            // this.selectProd=skuList[0]; 
-            // var firstSaleAttr=this.selectProd.saleAttr;
+            
             var firstSaleAttr=skuList[0].saleAttr;
             if(null==firstSaleAttr||""==firstSaleAttr||firstSaleAttr.length<=0) {
                 //如果第一个商品没有属性 则才spu的所有商品没有属性，展示第一个商品的数据信息
@@ -123,7 +141,6 @@ export default {
             this.selectProd=spuProd;
             this.defProd=spuProd;
 
-            // this.selectSpu={};//map
             var newSkuList={};//map
             var attrList=[];//用于展示属性排列
             var attrIds=[];
@@ -188,11 +205,13 @@ export default {
                             this.selectAttrList[attrId] = valObj;
                         }
                     }
+                    Object.keys(this.selectAttrList).length
                 }
             }
             
             this.selectSpu=newSkuList;
             this.selectAttrGroup=attrList;//赋值展示属性数组
+            this.attrGroupCount=this.selectAttrGroup.length;
             
 
             // console.log(attrList);
@@ -239,6 +258,7 @@ export default {
                 } else {
                     this.selectAttrList[attrId] = attrValues;
                 }
+                this.selectAttrListLen=Object.keys(this.selectAttrList).length;
                 this.changeAttrStyle();
             }
         },
@@ -295,7 +315,6 @@ export default {
                     mayProductList = valueList.prodId;
                 }
             }
-//                console.log(mayProductList);
             if (mayProductList.length > 0) {
                 this.selectProd = this.selectSpu[mayProductList[0]];
             } else {
@@ -311,7 +330,6 @@ export default {
             if(this.buyNum>this.selectProd.stock){
                 this.buyNum=this.selectProd.stock;
             }
-            this.changeBtnStyle();
         },
         clickChangeBuyNum:function(type){//点击改变购买个数 
             this.changeBuyNum(type); 
@@ -323,60 +341,52 @@ export default {
                 this.changeBuyNum(type);
                 event.preventDefault();
             }else{
-//                alert(5);
                 return;
             }
         },
         changeBuyNum:function(type){//点击改变购买个数        
-            // if(!$(event.currentTarget).hasClass("off")) {
-                if (type == 0&&this.isoffm==1) {
+            if(!$(event.currentTarget).hasClass("off")) {
+                if (type == 0) {
                     if (this.buyNum > 1) {
                         this.buyNum = parseInt(this.buyNum) - 1;
                     }
-                this.changeBtnStyle();
-                } else if(this.isoffp==1){
+                } else {
                     if (this.buyNum < this.selectProd.stock) {
                         this.buyNum = parseInt(this.buyNum) + 1;
                     }
-                this.changeBtnStyle();
                 }
-            // }
-        },
-        changeBtnStyle:function(){
-                if (this.buyNum > 1) {
-                    this.isoffm=1;
-                    // $(".btn-minus").removeClass("off");
-                }else{
-                    this.isoffm=0;
-                    // $(".btn-minus").addClass("off");
-                }
-                if (this.buyNum < this.selectProd.stock) {
-                    this.isoffp=1;
-                    // $(".btn-plus").removeClass("off");
-                }else{
-                    this.isoffp=0;
-                    // $(".btn-plus").addClass("off");
-                }
+            }
         },
         addCartAction:function(){
-            if(this.selectProd.stock>0){
-                if (Object.keys(this.selectAttrList).length == this.selectAttrGroup.length) {
-                    this.$store.dispatch('cartadd', this.selectProd);
+            if (Object.keys(this.selectAttrList).length == this.selectAttrGroup.length) {
+                if(this.selectProd.stock>0){
+                    if(!this.$store.state.cart.includes(this.selectProd)){
+                        this.selectProd.sel=false;
+                        this.selectProd.selCount=this.buyNum;
+                        this.$store.dispatch('cartadd', this.selectProd);                    
+                        // console.log(this.$store.state.cart)
+                        layer.open({
+                            content: '添加成功!'
+                            ,skin: 'msg'
+                            ,time: 2 //2秒后自动关闭
+                        });
+                    }else{
                     
-                    // console.log(this.$store.state.cart)
-                    layer.open({
-                        content: '添加成功!'
-                        ,skin: 'msg'
-                        ,time: 2 //2秒后自动关闭
-                    });
-                }else{
-                    // layer.msg("请选择商品");
-                    layer.open({
-                        content: '请选择商品!'
-                        ,skin: 'msg'
-                        ,time: 2 //2秒后自动关闭
-                    });
+                        // console.log(this.$store.state.cart)
+                        layer.open({
+                            content: '已经在购物车中了!'
+                            ,skin: 'msg'
+                            ,time: 2 //2秒后自动关闭
+                        });
+                    }
                 }
+            }else{
+                // layer.msg("请选择商品");
+                layer.open({
+                    content: '请选择商品!'
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                });
             }
 
         }

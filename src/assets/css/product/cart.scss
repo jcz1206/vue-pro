@@ -144,3 +144,30 @@ input[type=checkbox], input[type=radio] {
   // font-size: 28px;
   font-size:.4rem;
 }
+
+
+.pcart{
+  .prodlist .prodnumber,.prodlist .prodcart{ width:50%;}
+  .prodlist {
+      margin-bottom:100px;
+  }
+  
+  .prodlist .prodimg{
+      width: 2rem;
+      height: 2rem;
+  }
+  .prodlist .ft-cb{
+    width:.8rem;
+    text-align: center;
+    padding-top: .3rem;
+    height: 1.2rem;
+  }
+  .prodlist .prodcon {
+      width: -webkit-calc(100% - 2.8rem);
+      width: -moz-calc(100% - 2.8rem);
+      width: calc(100% - 2.8rem);
+  }
+  .prodlist .o-t-cb + label:after {
+      height:1.2rem;
+  }
+  }
