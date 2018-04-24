@@ -70,6 +70,10 @@
             </div>
             <!--活动-->
             <div>
+      <el-button>Start</el-button>
+      <el-select>
+        <el-option value="sss">ssssss</el-option>
+      </el-select>
               
               <!-- <div class="ceshitu"></div> -->
             </div>
