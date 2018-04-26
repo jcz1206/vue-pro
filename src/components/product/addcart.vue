@@ -69,7 +69,7 @@
 </template>
 <script>
 
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name:"addcart",
   props:["selectedSpu"],
@@ -88,6 +88,7 @@ export default {
             //   isoffp:1,//购买的数量 0不能加 1能加
       }
   },
+//   store,
   computed:{
       judgeBuy:function(){console.log(this.selectProd.stock);
         //   console.log()
@@ -339,7 +340,7 @@ export default {
             var ua = window.navigator.userAgent.toLowerCase();
             if(ua.match(/MicroMessenger/i) == 'micromessenger'||/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)||/(Android)/i.test(navigator.userAgent)){
                 this.changeBuyNum(type);
-                event.preventDefault();
+                window.event.preventDefault();
             }else{
                 return;
             }

@@ -78,7 +78,7 @@
 </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import footbar from "@/components/footbar.vue";
 import "@/assets/css/product/cart.scss"
 export default{
