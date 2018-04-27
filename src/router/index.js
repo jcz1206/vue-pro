@@ -16,7 +16,9 @@ Vue.use(Router)
 
 //export default new Router({
 //routes: [
-const routes = [{
+const routes = [
+    { path: '*', component: HelloWorld },
+    {
             path: '/HelloWorld',
             name: 'HelloWorld',
             component: HelloWorld
@@ -58,7 +60,7 @@ const routes = [{
             meta: {
                 requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
             },
-            component: my
+            component: my ,alias: ['/baz', 'baz-alias'] 
         },
         {
             path: '/setting',
@@ -68,12 +70,13 @@ const routes = [{
         {
             path: '/mycart',
             name: 'mycart',
-            component: mycart
+            component: mycart,alias:'/mycart00'
         }
     ] //,
 
 //})
 const router = new Router({
+    mode:'history',
     routes // （缩写）相当于 routes: routes
 })
 
